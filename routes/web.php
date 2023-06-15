@@ -2,6 +2,11 @@
 
 use App\http\controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\http\controllers\DashboardController;
+use App\http\controllers\CategoryController;
+use App\http\controllers\ProductController;
+use App\http\controllers\RoleController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +20,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('landing/landing');
+})->name('home');
 
+route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
-Route::get('/user', [UserController::class, 'index']);
+route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+
+route::get('/product', [ProductController::class, 'index'])->name('product.index');
+
+Route::get('/user', [UserController::class, 'index'])->name('user.index');
+
+Route::get('/role', [RoleController::class, 'index'])->name('role.index');
+

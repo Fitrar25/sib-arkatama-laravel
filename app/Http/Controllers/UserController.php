@@ -8,12 +8,18 @@ class UserController extends Controller
 {
     //
 
+    public function homepage(){
+        return view('user.landing');
+    }
+
     public function index(){
         return view('user.index');
 
     }
 
     public function create(){
-        return "Pandau Permai";
+        return view('user.form');
     }
+
+
 }
