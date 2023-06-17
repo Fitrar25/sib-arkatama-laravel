@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\user;
+use App\Models\role;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,12 +15,25 @@ class UserController extends Controller
     }
 
     public function index(){
-        return view('user.index');
+        $users = user::with('role')->get( );
+        return view('user.index', compact('users'));
 
     }
 
     public function create(){
-        return view('user.form');
+        $roles = role::all();
+        return view('user.create', compact('roles'));
+    }
+
+    public function store(Request $request){
+        $users = user::create([
+            'role_id' => $request->role,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => $request->password,
+        ]);
+        return redirect()->route('user.index');
     }
 
 

@@ -26,10 +26,16 @@ Route::get('/', function () {
 route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
 route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
+Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
 
 route::get('/product', [ProductController::class, 'index'])->name('product.index');
+route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+Route::post('/product', [ProductController::class, 'store'])->name('product.store');
 
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
+Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+Route::post('/user', [UserController::class, 'store'])->name('user.store');
 
 Route::get('/role', [RoleController::class, 'index'])->name('role.index');
 
